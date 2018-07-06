@@ -18,6 +18,7 @@ app.get('/', services.hello);
 app.post('/poll', services.newPoll);
 app.post('/vote/:poll_id/:option', services.vote);
 app.get('/polls', services.getPollsList);
+app.get('/reset', services.reset);
 
 app
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));

@@ -64,4 +64,15 @@ const getPollsList = (request, response) => {
   }
 };
 
-module.exports = {hello, newPoll, vote, getPollsList};
+const reset = () => {
+  try {
+    fs.writeFileSync('data/db.json', JSON.stringify([]));
+  } catch (error) {
+    response.status(500).send({
+      message: 'Can not reset api rest',
+      stack: error
+    });
+  }
+};
+
+module.exports = {hello, newPoll, vote, getPollsList, reset};
