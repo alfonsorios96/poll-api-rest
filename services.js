@@ -28,8 +28,8 @@ const newPoll = (request, response) => {
 };
 
 const vote = (request, response) => {
-  const pollId = request.params.poll_id;
-  const option = request.params.option;
+  const pollId = request.body.pollId;
+  const option = request.body.option;
   let polls = [];
   try {
     const file = fs.readFileSync('data/db.json');
@@ -67,6 +67,7 @@ const getPollsList = (request, response) => {
 const reset = () => {
   try {
     fs.writeFileSync('data/db.json', JSON.stringify([]));
+    response.status(200).send(JSON.stringify([]));
   } catch (error) {
     response.status(500).send({
       message: 'Can not reset api rest',

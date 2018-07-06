@@ -16,7 +16,7 @@ const services = require('./services');
 
 app.get('/', services.hello);
 app.post('/poll', services.newPoll);
-app.post('/vote/:poll_id/:option', services.vote);
+app.post('/vote', services.vote);
 app.get('/polls', services.getPollsList);
 app.get('/reset', services.reset);
 
